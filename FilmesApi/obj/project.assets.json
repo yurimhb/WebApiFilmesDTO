@@ -6856,11 +6856,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yuri\\source\\repos\\FilmesApi\\FilmesApi\\FilmesApi.csproj",
+      "projectUniqueName": "A:\\Web\\MVC Core\\WebApiFilmesDTO\\FilmesApi\\FilmesApi.csproj",
       "projectName": "FilmesApi",
-      "projectPath": "C:\\Users\\Yuri\\source\\repos\\FilmesApi\\FilmesApi\\FilmesApi.csproj",
+      "projectPath": "A:\\Web\\MVC Core\\WebApiFilmesDTO\\FilmesApi\\FilmesApi.csproj",
       "packagesPath": "C:\\Users\\Yuri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yuri\\source\\repos\\FilmesApi\\FilmesApi\\obj\\",
+      "outputPath": "A:\\Web\\MVC Core\\WebApiFilmesDTO\\FilmesApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Yuri\\AppData\\Roaming\\NuGet\\NuGet.Config",

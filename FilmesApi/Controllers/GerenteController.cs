@@ -50,8 +50,23 @@ namespace FilmesApi.Controllers
                 return NotFound();
 
             ReadGerenteDto dto = mapper.Map<ReadGerenteDto>(gerente);
-            return Ok(gerente);
+            return Ok(dto);
 
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeletaGerente(int id)
+        {
+            Gerente gerente = filmeContext.Gerentes.FirstOrDefault(filme => filme.Id == id);
+            if (gerente == null)
+            {
+                return NotFound();
+            }
+
+            filmeContext.Remove(gerente);
+            filmeContext.SaveChanges();
+
+            return NoContent();
         }
     }
 }
