@@ -2,6 +2,8 @@
 using FilmesApi.Data;
 using FilmesApi.Data.Dtos.Sessao;
 using FilmesApi.Model;
+using FilmesApi.Services;
+using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,47 +16,40 @@ namespace FilmesApi.Controllers
     [Route("[controller]")]
     public class SessaoController : ControllerBase
     {
-        private readonly FilmeContext filmeContext;
-        private readonly IMapper mapper;
 
-        public SessaoController(FilmeContext filmeContext, IMapper mapper)
+        private SessaoServices sessaoServices;
+
+        public SessaoController(SessaoServices sessaoServices)
         {
-            this.filmeContext = filmeContext;
-            this.mapper = mapper;
+            this.sessaoServices = sessaoServices;
         }
-
 
         [HttpPost]
         public IActionResult AdicionaSessao(CreateSessaoDto createSessaoDto) 
         {
-            Sessao sessao = mapper.Map<Sessao>(createSessaoDto);
-            filmeContext.Sessoes.Add(sessao);
-            filmeContext.SaveChanges();
-            return CreatedAtAction(nameof(RecuperaSessaoPorId), new { Id = sessao.Id }, sessao);
+            ReadSessaoDto readSessaoDto = sessaoServices.AdicionaSessao(createSessaoDto);
+            
+            return CreatedAtAction(nameof(RecuperaSessaoPorId), new { Id = readSessaoDto.Id }, readSessaoDto);
         }
 
         [HttpGet("{id}")]
         public IActionResult RecuperaSessaoPorId(int id)
         {
-            var sessao = filmeContext.Sessoes.FirstOrDefault(x => x.Id == id);
-            var sessaodto = mapper.Map<ReadSessaoDto>(sessao);
+            ReadSessaoDto readSessaoDto = sessaoServices.RecuperaSessaoPorId(id);
 
-            if (sessao == null)
+            if (readSessaoDto== null)
                 return NotFound();
 
-            return Ok(sessaodto);
+            return Ok(readSessaoDto);
         }
 
         [HttpPut("{id}")]
         public IActionResult AtualizarSessao(int id, [FromBody]UpdateSessaoDto sessaoDto)
         {
-            var sessao = filmeContext.Sessoes.FirstOrDefault(x => x.Id == id);
-            if (sessao == null)
+            Result result = sessaoServices.AtualizaSessao(id, sessaoDto);
+
+            if (result.IsFailed)
                 return NotFound();
-
-            mapper.Map(sessaoDto, sessao);
-            filmeContext.SaveChanges();
-
             return NoContent();
         }
     }

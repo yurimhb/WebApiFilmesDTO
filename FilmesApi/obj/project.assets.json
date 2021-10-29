@@ -59,6 +59,15 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
+      "FluentResults/2.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/FluentResults.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/FluentResults.dll": {}
+        }
+      },
       "Google.Protobuf/3.14.0": {
         "type": "package",
         "dependencies": {
@@ -2034,6 +2043,23 @@
         "lib/netstandard1.5/Castle.Core.dll",
         "lib/netstandard1.5/Castle.Core.xml",
         "readme.txt"
+      ]
+    },
+    "FluentResults/2.6.0": {
+      "sha512": "RcgzxlxBtCYeDRJlDXHpwHLIhZOhJKezF9vpJYEc197WqUvEfAE8k3v9EgkP8mcZ6VvjPF5uMtcoJNPjALGW8Q==",
+      "type": "package",
+      "path": "fluentresults/2.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "FluentResults-Icon-128.png",
+        "fluentresults.2.6.0.nupkg.sha512",
+        "fluentresults.nuspec",
+        "lib/net45/FluentResults.dll",
+        "lib/net461/FluentResults.dll",
+        "lib/netstandard1.1/FluentResults.dll",
+        "lib/netstandard2.0/FluentResults.dll",
+        "lib/netstandard2.1/FluentResults.dll"
       ]
     },
     "Google.Protobuf/3.14.0": {
@@ -6843,6 +6869,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
+      "FluentResults >= 2.6.0",
       "Microsoft.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Proxies >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
@@ -6892,6 +6919,10 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[8.1.1, )"
+          },
+          "FluentResults": {
+            "target": "Package",
+            "version": "[2.6.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
