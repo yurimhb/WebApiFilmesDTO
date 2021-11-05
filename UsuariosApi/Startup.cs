@@ -29,12 +29,18 @@ namespace UsuariosApi
             services.AddDbContext<UsuarioDbContext>(opt =>
                 opt.UseMySQL(Configuration.GetConnectionString("UsuarioConnection"))
             );
-            services.AddIdentity<IdentityUser<int>, IdentityRole<int>>()
-                .AddEntityFrameworkStores<UsuarioDbContext>();
+
+            services.AddIdentity<IdentityUser<int>, IdentityRole<int>>(opt => opt
+            .SignIn.RequireConfirmedEmail = true)
+                .AddEntityFrameworkStores<UsuarioDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddScoped<CadastroService, CadastroService>();
             services.AddScoped<LoginService, LoginService>();
             services.AddScoped<TokenService, TokenService>();
             services.AddScoped<LogoutService, LogoutService>();
+            services.AddScoped<EmailService, EmailService>();
+            
             services.AddControllers();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
