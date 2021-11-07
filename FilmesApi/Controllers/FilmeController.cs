@@ -1,7 +1,7 @@
 ﻿
 using AutoMapper;
 using FilmesApi.Data;
-using FilmesApi.Services;
+using Services;
 using FilmesAPI.Data;
 using FilmesAPI.Data.Dtos;
 using FilmesAPI.Models;

@@ -59,13 +59,38 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
-      "FluentResults/2.6.0": {
+      "FluentAssertions/6.2.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Configuration.ConfigurationManager": "4.4.0"
+        },
+        "compile": {
+          "lib/netcoreapp3.0/FluentAssertions.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/FluentAssertions.dll": {}
+        }
+      },
+      "FluentResults/3.0.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/FluentResults.dll": {}
         },
         "runtime": {
           "lib/netstandard2.1/FluentResults.dll": {}
+        }
+      },
+      "FluentResults.Extensions.FluentAssertions/1.0.0": {
+        "type": "package",
+        "dependencies": {
+          "FluentAssertions": "6.2.0",
+          "FluentResults": "3.0.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/FluentResults.Extensions.FluentAssertions.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/FluentResults.Extensions.FluentAssertions.dll": {}
         }
       },
       "Google.Protobuf/3.14.0": {
@@ -1962,6 +1987,61 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
+      },
+      "Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Entidades": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Contracts.dll": {}
+        }
+      },
+      "Entidades/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "AutoMapper": "10.1.1",
+          "Microsoft.EntityFrameworkCore": "5.0.11"
+        },
+        "compile": {
+          "bin/placeholder/Entidades.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Entidades.dll": {}
+        }
+      },
+      "Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Contracts": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Repository.dll": {}
+        }
+      },
+      "Services/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "FluentResults": "3.0.0",
+          "FluentResults.Extensions.FluentAssertions": "1.0.0",
+          "Repository": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Services.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Services.dll": {}
+        }
       }
     }
   },
@@ -2045,21 +2125,59 @@
         "readme.txt"
       ]
     },
-    "FluentResults/2.6.0": {
-      "sha512": "RcgzxlxBtCYeDRJlDXHpwHLIhZOhJKezF9vpJYEc197WqUvEfAE8k3v9EgkP8mcZ6VvjPF5uMtcoJNPjALGW8Q==",
+    "FluentAssertions/6.2.0": {
+      "sha512": "5YOZLB0Tay1bw+wEYZTAZlPThQ/Yntk1HSPJYluMd5PW/Xg9E8I1mRC03AKRsnuANBR0kYaHq0NX1fg7RgrGNA==",
       "type": "package",
-      "path": "fluentresults/2.6.0",
+      "path": "fluentassertions/6.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "FluentAssertions.png",
+        "fluentassertions.6.2.0.nupkg.sha512",
+        "fluentassertions.nuspec",
+        "lib/net47/FluentAssertions.dll",
+        "lib/net47/FluentAssertions.pdb",
+        "lib/net47/FluentAssertions.xml",
+        "lib/netcoreapp2.1/FluentAssertions.dll",
+        "lib/netcoreapp2.1/FluentAssertions.pdb",
+        "lib/netcoreapp2.1/FluentAssertions.xml",
+        "lib/netcoreapp3.0/FluentAssertions.dll",
+        "lib/netcoreapp3.0/FluentAssertions.pdb",
+        "lib/netcoreapp3.0/FluentAssertions.xml",
+        "lib/netstandard2.0/FluentAssertions.dll",
+        "lib/netstandard2.0/FluentAssertions.pdb",
+        "lib/netstandard2.0/FluentAssertions.xml",
+        "lib/netstandard2.1/FluentAssertions.dll",
+        "lib/netstandard2.1/FluentAssertions.pdb",
+        "lib/netstandard2.1/FluentAssertions.xml"
+      ]
+    },
+    "FluentResults/3.0.0": {
+      "sha512": "/IYIdnWpdTLjTV0zBsEU/kzI57/a40KSBso43L1xo6SvoRnQMsvKhG2Yo0iwIM/LcbAX0GZwBcoA4IRv9K17DQ==",
+      "type": "package",
+      "path": "fluentresults/3.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "FluentResults-Icon-128.png",
-        "fluentresults.2.6.0.nupkg.sha512",
+        "fluentresults.3.0.0.nupkg.sha512",
         "fluentresults.nuspec",
-        "lib/net45/FluentResults.dll",
-        "lib/net461/FluentResults.dll",
-        "lib/netstandard1.1/FluentResults.dll",
         "lib/netstandard2.0/FluentResults.dll",
         "lib/netstandard2.1/FluentResults.dll"
+      ]
+    },
+    "FluentResults.Extensions.FluentAssertions/1.0.0": {
+      "sha512": "5bMagl956CtprE1BZlTMSMjTUYCfXNnpIh+FSbrclIsRWLIwLsEfR2IVILFEry2yjQniRMLCuYGYGkheBwqDUA==",
+      "type": "package",
+      "path": "fluentresults.extensions.fluentassertions/1.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "FluentResults-Icon-128.png",
+        "fluentresults.extensions.fluentassertions.1.0.0.nupkg.sha512",
+        "fluentresults.extensions.fluentassertions.nuspec",
+        "lib/netstandard2.0/FluentResults.Extensions.FluentAssertions.dll",
+        "lib/netstandard2.1/FluentResults.Extensions.FluentAssertions.dll"
       ]
     },
     "Google.Protobuf/3.14.0": {
@@ -6864,16 +6982,38 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "Contracts/1.0.0": {
+      "type": "project",
+      "path": "../Contracts/Contracts.csproj",
+      "msbuildProject": "../Contracts/Contracts.csproj"
+    },
+    "Entidades/1.0.0": {
+      "type": "project",
+      "path": "../Entidades/Entidades.csproj",
+      "msbuildProject": "../Entidades/Entidades.csproj"
+    },
+    "Repository/1.0.0": {
+      "type": "project",
+      "path": "../Repository/Repository.csproj",
+      "msbuildProject": "../Repository/Repository.csproj"
+    },
+    "Services/1.0.0": {
+      "type": "project",
+      "path": "../Services/Services.csproj",
+      "msbuildProject": "../Services/Services.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
-      "FluentResults >= 2.6.0",
+      "FluentResults >= 3.0.0",
       "Microsoft.EntityFrameworkCore >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Proxies >= 5.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.11",
       "MySql.EntityFrameworkCore >= 5.0.8",
+      "Repository >= 1.0.0",
+      "Services >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
   },
@@ -6903,7 +7043,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "A:\\Web\\MVC Core\\WebApiFilmesDTO\\Repository\\Repository.csproj": {
+              "projectPath": "A:\\Web\\MVC Core\\WebApiFilmesDTO\\Repository\\Repository.csproj"
+            },
+            "A:\\Web\\MVC Core\\WebApiFilmesDTO\\Services\\Services.csproj": {
+              "projectPath": "A:\\Web\\MVC Core\\WebApiFilmesDTO\\Services\\Services.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -6922,7 +7069,7 @@
           },
           "FluentResults": {
             "target": "Package",
-            "version": "[2.6.0, )"
+            "version": "[3.0.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",

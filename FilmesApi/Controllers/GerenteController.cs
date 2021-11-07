@@ -1,14 +1,9 @@
-﻿using AutoMapper;
-using FilmesApi.Data;
-using FilmesApi.Data.Dtos.Gerente;
+﻿using FilmesApi.Data.Dtos.Gerente;
 using FilmesApi.Model;
-using FilmesApi.Services;
+using Services;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FilmesApi.Controllers
 {
@@ -24,7 +19,7 @@ namespace FilmesApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdicionarGerente([FromBody]CreateGerenteDto createGerenteDto) 
+        public IActionResult AdicionarGerente([FromBody] CreateGerenteDto createGerenteDto)
         {
             ReadGerenteDto readGerenteDto = gerenteService.AdicionarGerente(createGerenteDto);
             return CreatedAtAction(nameof(RecuperarGerente), new { Id = readGerenteDto.Id }, readGerenteDto);

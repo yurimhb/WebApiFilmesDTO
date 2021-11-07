@@ -1,14 +1,7 @@
-﻿using AutoMapper;
-using FilmesApi.Data;
-using FilmesApi.Data.Dtos.Sessao;
-using FilmesApi.Model;
-using FilmesApi.Services;
+﻿using FilmesApi.Data.Dtos.Sessao;
+using Services;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FilmesApi.Controllers
 {
@@ -25,10 +18,10 @@ namespace FilmesApi.Controllers
         }
 
         [HttpPost]
-        public IActionResult AdicionaSessao(CreateSessaoDto createSessaoDto) 
+        public IActionResult AdicionaSessao(CreateSessaoDto createSessaoDto)
         {
             ReadSessaoDto readSessaoDto = sessaoServices.AdicionaSessao(createSessaoDto);
-            
+
             return CreatedAtAction(nameof(RecuperaSessaoPorId), new { Id = readSessaoDto.Id }, readSessaoDto);
         }
 
@@ -37,14 +30,14 @@ namespace FilmesApi.Controllers
         {
             ReadSessaoDto readSessaoDto = sessaoServices.RecuperaSessaoPorId(id);
 
-            if (readSessaoDto== null)
+            if (readSessaoDto == null)
                 return NotFound();
 
             return Ok(readSessaoDto);
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizarSessao(int id, [FromBody]UpdateSessaoDto sessaoDto)
+        public IActionResult AtualizarSessao(int id, [FromBody] UpdateSessaoDto sessaoDto)
         {
             Result result = sessaoServices.AtualizaSessao(id, sessaoDto);
 

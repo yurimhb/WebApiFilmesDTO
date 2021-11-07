@@ -2,7 +2,7 @@
 using FilmesApi.Data;
 using FilmesApi.Data.Dtos.Endereco;
 using FilmesApi.Model;
-using FilmesApi.Services;
+using Services;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -42,7 +42,7 @@ namespace FilmesApi.Controllers
         public IActionResult RecuperaEnderecosPorId(int id)
         {
             ReadEnderecoDto readEnderecoDto = enderecoService.RecuperaEnderecosPorId(id);
-            if(readEnderecoDto==null)
+            if (readEnderecoDto == null)
                 return NotFound();
             return Ok(readEnderecoDto);
         }

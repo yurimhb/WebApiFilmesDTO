@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FilmesApi.Services
+namespace Services
 {
     public class CinemaService
     {
@@ -56,7 +56,7 @@ namespace FilmesApi.Services
             return null;
         }
 
-        internal Result AtualizarCinema(int id, UpdateCinemaDto cinemaDto)
+        public Result AtualizarCinema(int id, UpdateCinemaDto cinemaDto)
         {
             Cinema cinema = cinemaRepository.FindAll().FirstOrDefault(cinema => cinema.Id == id);
             if (cinema == null)

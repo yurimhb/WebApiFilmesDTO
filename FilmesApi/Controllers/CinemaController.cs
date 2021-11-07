@@ -1,15 +1,8 @@
-﻿using AutoMapper;
-using FilmesApi.Data;
-using FilmesApi.Services;
-using FilmesAPI.Data.Dtos;
-using FilmesAPI.Models;
+﻿using FilmesAPI.Data.Dtos;
 using FluentResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System;
+using Services;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FilmesAPI.Controllers
 {
@@ -57,7 +50,7 @@ namespace FilmesAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult AtualizaCinema(int id, [FromBody] UpdateCinemaDto cinemaDto)
         {
-            Result result = cinemaService.AtualizarCinema(id,cinemaDto);
+            Result result = cinemaService.AtualizarCinema(id, cinemaDto);
 
             if (result.IsFailed)
                 return NotFound();

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FilmesApi.Services
+namespace Services
 {
     public class GerenteService
     {
@@ -45,7 +45,7 @@ namespace FilmesApi.Services
             return null;
         }
 
-        internal Result DeletaGerente(int id)
+        public Result DeletaGerente(int id)
         {
             Gerente gerente = gerenteRepository.FirstOrDefault(filme => filme.Id == id);
             if (gerente == null)

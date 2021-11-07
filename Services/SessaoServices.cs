@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FilmesApi.Services
+namespace Services
 {
     public class SessaoServices
     {
@@ -37,7 +37,7 @@ namespace FilmesApi.Services
 
         }
 
-        internal Result AtualizaSessao(int id, UpdateSessaoDto sessaoDto)
+        public Result AtualizaSessao(int id, UpdateSessaoDto sessaoDto)
         {
             var sessao = sessaoRepository.FirstOrDefault(x => x.Id == id);
             if (sessao == null)

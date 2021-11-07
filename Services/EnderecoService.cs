@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FilmesApi.Services
+namespace Services
 {
     public class EnderecoService
     {
@@ -47,7 +47,7 @@ namespace FilmesApi.Services
             return null;
         }
 
-        internal Result AtualizaEndereco(UpdateEnderecoDto enderecoDto, int id)
+        public Result AtualizaEndereco(UpdateEnderecoDto enderecoDto, int id)
         {
             Endereco endereco = enderecoRepository.FirstOrDefault(end => end.Id == id);
             if (endereco == null)
@@ -59,7 +59,7 @@ namespace FilmesApi.Services
             return Result.Ok();
         }
 
-        internal Result DeletaEndereco(int id)
+        public Result DeletaEndereco(int id)
         {
             Endereco endereco = enderecoRepository.FirstOrDefault(endereco => endereco.Id == id);
             if (endereco == null)

@@ -1,12 +1,12 @@
-using FilmesApi.Data;
-using FilmesApi.Services;
+using Entidades.Profiles;
+using FilmesApi.Extensões;
+using Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
 
 namespace FilmesAPI
 {
@@ -22,14 +22,17 @@ namespace FilmesAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<FilmeContext>(opts => opts.UseLazyLoadingProxies().UseMySQL(Configuration.GetConnectionString("FilmeConnection")));
             services.AddControllers();
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAutoMapper(typeof(CinemaProfile), typeof(EnderecoProfile), typeof(GerenteProfile), typeof(SessaoProfile), typeof(FilmeProfile));
             services.AddScoped<FilmeService, FilmeService>();
             services.AddScoped<CinemaService, CinemaService>();
             services.AddScoped<EnderecoService, EnderecoService>();
             services.AddScoped<GerenteService, GerenteService>();
             services.AddScoped<SessaoServices, SessaoServices>();
+
+            services.ConfigureCors();
+            services.ConfigureMysql(Configuration);
+            services.ConfigureRepositoryBase();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +48,9 @@ namespace FilmesAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("CorsPolicy");
+            app.UseForwardedHeaders(new ForwardedHeadersOptions { ForwardedHeaders = ForwardedHeaders.All });
 
             app.UseAuthorization();
 
